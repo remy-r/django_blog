@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Mon Blog</title>
+<meta http-equiv="Content-Language" content="English" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'accueil/style.css' %}" media="screen" />
+</head>
+<body>
+{% load menus %}
+<div id="wrap">
+
+<div id="header" style="width: 100%;">
+        <div style="width: 50%; height: 100px; float: left;">
+            <h1><a href="{% url 'accueil:index' %}">Mon blog</a></h1>
+            <h2>A Django training</h2>
+        </div>
+        <div style="margin-left: 50%; height: 100px;text-align: right">
+            {% block login %}
+                {% if user.is_authenticated %}
+                  Hi {{ user.username }}!
+                    <p><a href="{% url 'logout' %}">logout</a></p>
+                {% else %}
+                  <p>You are not logged in</p>
+                  <a href="{% url 'login' %}">login</a>
+                {% endif %}
+            {% endblock %}
+        </div>
+    </div>
+<div id="menu">
+<ul>
+<li><a href="{% url 'accueil:index' %}">Home</a></li>
+<li><a href="{% url 'blogApp:index' %}">Blog</a></li>
+{% if user|has_group:"admin" %}
+<li><a href="{% url 'blogApp:Brouillon' %}">Brouillons</a></li>
+{% endif %}
+</ul>
+</div>
+
+<div id="content">
+<div class="right"> 
+
+{%block content %}
+
+<h2><a href="#">License and terms of use</a></h2>
+<div class="articles">
+White and Clean Rounded is a CSS template that is free and fully standards compliant. <a href="http://www.free-css-templates.com/">Free CSS templates</a> designed this template.
+This template is allowed for all uses, including commercial use, as it is released under the <strong>Creative Commons Attributions 2.5</strong> license. The only stipulation to the use of this free template is that the links appearing in the footer remain intact. Beyond that, simply enjoy and have fun with it!	 
+<br /><br />
+<img src="{% static 'accueil/images/pic.jpg' %}" alt="Example pic" style="border: 3px solid #ccc;" />
+<br /><br />
+Donec nulla. Aenean eu augue ac nisl tincidunt rutrum. Proin erat justo, pharetra eget, posuere at, malesuada 
+et, nulla. Donec pretium nibh sed est faucibus suscipit. Nunc nisi. Nullam vehicula. In ipsum lorem, bibendum sed, 
+consectetuer et, gravida id, erat. Ut imperdiet, leo vel condimentum faucibus, risus justo feugiat purus, vitae 
+congue nulla diam non urna.
+</div>
+<h2><a href="#">Title with a link - Example of heading 2</a></h2>
+<div class="articles">
+Donec nulla. Aenean eu augue ac nisl tincidunt rutrum. Proin erat justo, pharetra eget, posuere at, malesuada 
+et, nulla. Donec pretium nibh sed est faucibus suscipit. Nunc nisi. Nullam vehicula. In ipsum lorem, bibendum sed, 
+consectetuer et, gravida id, erat. Ut imperdiet, leo vel condimentum faucibus, risus justo feugiat purus, vitae 
+congue nulla diam non urna.
+</div>
+    {% endblock %}
+</div>
+
+
+<div class="left">
+    {% show_menus %}
+
+</div>
+<div style="clear: both;"> </div>
+</div>
+
+<div id="footer">
+Designed by <a href="http://www.free-css-templates.com/">Free CSS Templates</a>, Thanks to <a href="http://www.openwebdesign.org/">website design</a>
+</div>
+</div>
+
+</body>
+</html>

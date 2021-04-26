@@ -1,0 +1,13 @@
+{% extends "accueil/index.html" %}
+
+{% block content %}
+    <h2>{{ category.name }}</h2>
+<div class="articles">
+<ul>
+{% for post in post_list %}
+    <li><a href="{% url 'blogApp:Post' post.id %}">{{ post }}</a></li>
+{% endfor %}
+</ul>
+</div>
+{% endblock %}
+

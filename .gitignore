@@ -1,0 +1,10 @@
+/venv/
+/.idea
+docker-compose.yml
+Dockerfile
+/my.cnf
+/mysql
+/model.mwb.bak
+/blog/local_settings.py
+/static/*
+/media

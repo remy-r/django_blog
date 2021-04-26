@@ -1,0 +1,21 @@
+{% extends "accueil/index.html" %}
+{% load menus %}
+{% block content %}
+{% if user|has_group:"admin" %}
+<a href="{% url 'blogApp:editPost' post.id %}">Modifier</a>
+{% endif %}
+    <h2>{{ post.title }}</h2>
+
+<div class="articles">
+{{ post.content|safe }}
+<br />
+{{ post.pub_date }}
+<br />
+{{ post.status.text }}
+<br />
+<br />
+Catégorie(s) : {% for cat in post.categories.all %}{{ cat.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
+</div>
+<a href="{% url 'blogApp:index' %}">Retour à la liste</a>
+{% endblock %}
+

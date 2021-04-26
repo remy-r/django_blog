@@ -1,0 +1,21 @@
+{% if user.is_authenticated %}
+<h2>Categories :</h2>
+<ul>
+{% for category in categories %}
+<li><a href="{% url 'blogApp:Category' category.id %}">{{ category }}</a></li>
+{% endfor %}
+</ul>
+
+<h2>Archives</h2>
+<ul>
+{% for archive in archives %}
+<li><a href="{% url 'blogApp:archive_month_numeric' archive.month|date:"Y" archive.month|date:"m" %}">{{ archive.month|date:"F Y"|capfirst }}</a></li>
+{% endfor %}
+</ul>
+{% else %}
+<ul>
+<li><a href="{% url 'login' %}">login</a></li>
+</ul>
+
+{% endif %}
+

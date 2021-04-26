@@ -1,0 +1,20 @@
+{% extends "accueil/index.html" %}
+
+{% block content %}
+
+<ul>
+    {% for post in object_list %}
+        <li><a href="{% url 'blogApp:Post' post.id %}">{{ post.pub_date|date:"j F Y" }}: {{ post.title }}</a></li>
+    {% endfor %}
+</ul>
+
+<p>
+    {% if previous_month %}
+        <a href="{% url 'blogApp:archive_month_numeric' previous_month|date:"Y" previous_month|date:"m" %}">Mois précédent: {{ previous_month|date:"F Y" }}</a>
+    {% endif %}
+    {% if next_month %}
+        <a href="{% url 'blogApp:archive_month_numeric' next_month|date:"Y" next_month|date:"m" %}">Mois suivant: {{ next_month|date:"F Y" }}</a>
+    {% endif %}
+</p>
+
+{% endblock %}
