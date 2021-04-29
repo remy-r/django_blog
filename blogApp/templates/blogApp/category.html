@@ -2,6 +2,9 @@
 
 {% block content %}
     <h2>{{ category.name }}</h2>
+{% if category.content %}
+{{ category.content|safe }}</br>
+{% endif %}
 <div class="articles">
 <ul>
 {% for post in post_list %}

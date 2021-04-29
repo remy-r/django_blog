@@ -8,3 +8,4 @@ Dockerfile
 /blog/local_settings.py
 /static/*
 /media
+/test.py

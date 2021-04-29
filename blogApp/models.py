@@ -11,6 +11,7 @@ class Status(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=200)
+    content = RichTextUploadingField(default="")
 
     def __str__(self):
         return self.name
