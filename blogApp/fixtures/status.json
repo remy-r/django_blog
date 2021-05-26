@@ -1,0 +1,23 @@
+[
+{
+  "model": "blogApp.status",
+  "pk": 1,
+  "fields": {
+    "text": "Brouillon"
+  }
+},
+{
+  "model": "blogApp.status",
+  "pk": 2,
+  "fields": {
+    "text": "Publié"
+  }
+},
+{
+  "model": "blogApp.status",
+  "pk": 3,
+  "fields": {
+    "text": "Archivé"
+  }
+}
+]

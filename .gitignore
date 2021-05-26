@@ -1,7 +1,6 @@
 /venv/
 /.idea
 docker-compose.yml
-Dockerfile
 /my.cnf
 /mysql
 /model.mwb.bak
